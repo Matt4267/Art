@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artify - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z5vNskV7lZOtvh5qL+8HC2P2P1zI5XVJ/d2nUu" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        nav {
+            margin-top: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ff6347;
+        }
+        .hero {
+            background-image: url('/home/matt/Documents/Artify/pawel-czerwinski-yn97LNy0bao-unsplash.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .cta-button {
+            padding: 10px 20px;
+            background-color: #ff6347;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #ff4c29;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .featured-artworks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+        .artwork {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .artwork:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .artwork img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        .artwork-info {
+            padding: 15px;
+        }
+        .artwork-info h3 {
+            margin: 0 0 10px;
+            font-size: 1.2rem;
+        }
+        .artwork-info p {
+            margin: 0;
+            color: #dd4e4e;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Artify</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="Gallery.html">Gallery</a>
+            <a href="AboutUs.html">About</a>
+            <a href="Services.html">Services</a>
+            <a href="Blog.html">Blog</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Welcome to Artify</h1>
+        <p>Discover, collect, and share art.</p>
+        <a href="Signup.html" class="cta-button">Explore Now</a>
+    </div>
+
+    <div class="container">
+        <h2>Featured Artworks</h2>
+        <div class="featured-artworks">
+            <!-- Example artworks -->
+            <div class="artwork">
+                <img src="/home/matt/Documents/Artify/vincent-van-gogh-classic-art-painting-wallpaper-preview.jpg" alt="Artwork 1">
+                <div class="artwork-info">
+                    <h3>Classic Art Painting</h3>
+                    <p>By Vincent Van Gogh</p>
+                </div>
+            </div>
+            <div class="artwork">
+                <img src="/home/matt/Documents/Artify/sebastian-svenson-d2w-_1LJioQ-unsplash.jpg" alt="Artwork 2">
+                <div class="artwork-info">
+                    <h3>Artwork Title</h3>
+                    <p>By Artist Name</p>
+                </div>
+            </div>
+            <div class="artwork">
+                <img src="/home/matt/Documents/Artify/anna-kolosyuk-D5nh6mCW52c-unsplash.jpg" alt="Artwork 3">
+                <div class="artwork-info">
+                    <h3>Artwork Title</h3>
+                    <p>By Artist Name</p>
+                </div>
+            </div>
+            <!-- Add more artworks as needed -->
+        </div>
+    </div>
+
+    <!-- More sections like latest blog posts can be added here -->
+
+</body>
+</html>

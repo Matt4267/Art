@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Artify</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z5vNskV7lZOtvh5qL+8HC2P2P1zI5XVJ/d2nUu" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f5f5f5;
+            scroll-behavior: smooth;
+        }
+        header {
+            background: linear-gradient(90deg, #333, #555);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 5px 10px;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: #ff6347;
+            color: white;
+        }
+
+        .about-section {
+            padding: 50px;
+            background-color: orangered;
+            color: white;
+            animation: slideIn 1s ease-in-out;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+        .about-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .about-section p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .team-section {
+            padding: 50px;
+            background-color: #f5f5f5;
+        }
+        .team-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .team-member {
+            text-align: center;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .team-member img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .team-member h3 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        .team-member p {
+            font-size: 1rem;
+            margin: 5px 0;
+        }
+        .values-section {
+            padding: 50px;
+            background-color: white;
+        }
+        .values-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .values-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .values-list li {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .values-list li i {
+            margin-right: 10px;
+            color: #ff6347;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+        footer a:hover {
+            background-color: #ff6347;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        footer button {
+            padding: 10px 20px;
+            background-color: #ff6347;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        footer button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Artify</div>
+        <nav>
+            <a href="ArtifyHome.html">Home</a>
+            <a href="Gallery.html">Gallery</a>
+            <a href="#">About</a>
+            <a href="Services.html">Services</a>
+            <a href="Blog.html">Blog</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="about-header"></section>
+
+    <section class="about-section">
+        <h2>Our Mission</h2>
+        <p>At Artify, our mission is to empower artists by providing a platform to showcase, sell, and promote their artwork globally and locally. We aim to connect artists with art enthusiasts, collectors, and businesses, fostering a vibrant and inclusive art community.</p>
+        <h2>Our Vision</h2>
+        <p>We envision a world where art is accessible to everyone, where artists can thrive and where creativity is celebrated. Artify strives to be the leading online marketplace for art, bridging the gap between artists and their audiences.</p>
+    </section>
+
+    <section class="team-section">
+        <h2>Meet Our Team</h2>
+        <div class="team-members">
+            <div class="team-member">
+                <img src="/home/matt/Documents/Artify/WhatsApp Image 2024-05-05 at 10.24.01 PM.jpeg" alt="Matthew Mungai">
+                <h3>Matthew Mungai</h3>
+                <p>Founder & CEO</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/150" alt="Benjamin M'bekheh">
+                <h3>Benjamin M'bekheh</h3>
+                <p>Co-Founder & CEO</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <h2>Our Values</h2>
+        <ul class="values-list">
+            <li><i class="fas fa-paint-brush"></i> Creativity: We celebrate and encourage creative expression in all its forms.</li>
+            <li><i class="fas fa-globe"></i> Inclusivity: We believe art should be accessible to everyone, everywhere.</li>
+            <li><i class="fas fa-hand-holding-heart"></i> Support: We are committed to supporting artists at every stage of their careers.</li>
+            <li><i class="fas fa-seedling"></i> Growth: We strive to help artists grow their audience and their business.</li>
+            <li><i class="fas fa-users"></i> Community: We foster a strong, supportive community of artists, collectors, and art lovers.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <div>
+            <a href="ArtifyHome.html">Home</a>
+            <a href="Gallery.html">Gallery</a>
+            <a href="#">About</a>
+            <a href="Services.html">Services</a>
+            <a href="Blog.html">Blog</a>
+            <a href="Contact.html">Contact</a>
+        </div>
+        <p>Contact Us: mathewmungai132@gmail.com | +254 768 624 333</p>
+        <p>Contact Us: benjaminmbekheh@gmail.com | +254 721 451 038</p>
+        <div>
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+    </footer>
+
+    <button class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

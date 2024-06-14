@@ -1,0 +1,323 @@
+\<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artify - Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z5vNskV7lZOtvh5qL+8HC2P2P1zI5XVJ/d2nUu" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(90deg, #333, #555);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 5px 10px;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: #ff6347;
+            color: white;
+        }
+        .container {
+            padding: 20px;
+        }
+        .filter-bar {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .filter-bar input {
+            width: 70%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-right: 10px;
+        }
+        .filter-bar input:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .filter-bar button {
+            padding: 10px 15px;
+            font-size: 1rem;
+            border: none;
+            background-color: #ff6347;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .filter-bar button:hover {
+            background-color: #e5533d;
+            transform: translateY(-3px);
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .blog-card {
+            position: relative;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: black;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .blog-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .blog-card:hover img {
+            transform: scale(1.1);
+        }
+        .blog-card .content {
+            padding: 15px;
+        }
+        .blog-card h3 {
+            margin: 0 0 10px;
+            font-size: 1.2rem;
+        }
+        .blog-card p {
+            margin: 0;
+            color: #777;
+        }
+        .button {
+            cursor: pointer;
+            position: relative;
+            padding: 10px 24px;
+            font-size: 18px;
+            color: rgb(193, 163, 98);
+            border: 2px solid rgb(193, 163, 98);
+            border-radius: 34px;
+            background-color: transparent;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            overflow: hidden;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: 50px;
+            height: 50px;
+            border-radius: inherit;
+            scale: 0;
+            z-index: -1;
+            background-color: rgb(230, 112, 17);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .button:hover::before {
+            scale: 4.7;
+        }
+        .button:hover {
+            color: #212121;
+            scale: 1.1;
+            box-shadow: 0 0px 20px rgb(219, 102, 35);
+        }
+        .button:active {
+            scale: 1.5;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .modal-content input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .modal-content input:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .modal-content button {
+            padding: 10px 15px;
+            font-size: 1rem;
+            border: none;
+            background-color: #ff6347;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .modal-content button:hover {
+            background-color: #e5533d;
+            transform: translateY(-3px);
+        }
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav {
+                flex-direction: column;
+            }
+            .filter-bar {
+                flex-direction: column;
+            }
+            .filter-bar input {
+                margin-bottom: 10px;
+                width: 100%;
+            }
+            .filter-bar button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Artify</div>
+        <nav>
+            <a href="ArtifyHome.html">Home</a>
+            <a href="Gallery.html">Gallery</a>
+            <a href="AboutUs.html">About</a>
+            <a href="Services.html">Services</a>
+            <a href="#">Blog</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="filter-bar">
+            <input type="text" id="titleFilter" placeholder="Enter blog title to filter...">
+            <button onclick="document.getElementById('titleFilter').value = ''; filterBlogs();">Clear</button>
+        </div>
+        <div class="blog-grid" id="blogGrid">
+            <!-- Example blog cards -->
+            <div class="blog-card" data-title="The Beauty of Abstract Art">
+                <img src="/home/matt/Documents/Artify/ca5fd2923399a2a13fb55b44102cb758.webp" alt="Blog 1">
+                <div class="content">
+                    <h3>The Beauty of Abstract Art</h3>
+                    <p>Explore the mesmerizing world of abstract art and its impact on contemporary art scenes.</p>
+                </div>
+            </div>
+            <div class="blog-card" data-title="The Rise of Digital Art">
+                <img src="/home/matt/Documents/Artify/82-23-2-26-9-5-28m.jpg" alt="Blog 2">
+                <div class="content">
+                    <h3>The Rise of Digital Art</h3>
+                    <p>Digital art is transforming the art world. Discover how artists are embracing technology.</p>
+                </div>
+            </div>
+            <div class="blog-card" data-title="Sculpting the Future">
+                <img src="/home/matt/Documents/Artify/Image-5-George-Andric-George-Andric-960x540.jpg" alt="Blog 3">
+                <div class="content">
+                    <h3>Sculpting the Future</h3>
+                    <p>How contemporary sculptors are pushing the boundaries of traditional art forms.</p>
+                </div>
+            </div>
+            <!-- Add more blog cards as needed -->
+        </div>
+        <button class="button" onclick="openModal()">Subscribe to the Blog</button>
+    </div>
+
+    <div id="subscribeModal" class="modal">
+        <div class="modal-content">
+            <h2>Subscribe to our Blog</h2>
+            <input type="text" id="name" placeholder="Enter your name">
+            <input type="email" id="email" placeholder="Enter your email">
+            <input type="tel" id="phone" placeholder="Enter your phone number">
+            <button onclick="subscribe()">Subscribe</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('titleFilter').addEventListener('input', filterBlogs);
+
+        function filterBlogs() {
+            const filterValue = document.getElementById('titleFilter').value.toLowerCase();
+            const blogCards = document.querySelectorAll('.blog-card');
+            blogCards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                if (title.includes(filterValue)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function openModal() {
+            document.getElementById('subscribeModal').style.display = 'flex';
+        }
+
+        function subscribe() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            // Here you can add the logic to handle the subscription, like sending the data to a server
+            alert(`Thank you for subscribing, ${name}!`);
+            document.getElementById('subscribeModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('subscribeModal')) {
+                document.getElementById('subscribeModal').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

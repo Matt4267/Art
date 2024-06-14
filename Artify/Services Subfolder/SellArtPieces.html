@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Artworks - Artify</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z5vNskV7lZOtvh5qL+8HC2P2P1zI5XVJ/d2nUu" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header {
+            width: 100%;
+            padding: 20px;
+            background-color: #ff6347;
+            color: #fff;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 20px 20px;
+        }
+        .minimal-header {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+        .main-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 25px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            width: 55%;
+            padding: 20px;
+        }
+        h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #ff6347;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        textarea {
+            resize: vertical;
+        }
+        input[type="submit"] {
+            padding: 15px 20px;
+            background-color: #ff6347;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #e5533d;
+            transform: translateY(-3px);
+        }
+        .image-viewer-container {
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f2f2f2;
+            border-radius: 25px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+        .image-viewer {
+            max-width: 100%;
+            text-align: center;
+        }
+        .image-viewer img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .back-button {
+            margin-top: 20px;
+            text-align: left;
+            width: 100%;
+        }
+        .back-button a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .back-button a:hover {
+            color: #ff6347;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        .file-input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff6347;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .tooltip {
+            position: absolute;
+            bottom: 50px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .back-to-top:hover + .tooltip {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="minimal-header">Sell Artworks</div>
+    </header>
+    <div class="back-button">
+        <a href="../Services.html"><i class="fas fa-arrow-left"></i> Back</a>
+    </div>
+    <div class="main-container">
+        <div class="container">
+            <form id="artworkForm">
+                <div class="form-group">
+                    <label for="artworkName">Artwork Name:</label>
+                    <input type="text" id="artworkName" name="artworkName" required>
+                </div>
+                <div class="form-group">
+                    <label for="artistName">Artist Name:</label>
+                    <input type="text" id="artistName" name="artistName" required>
+                </div>
+                <div class="form-group">
+                    <label for="artworkDescription">Artwork Description:</label>
+                    <textarea id="artworkDescription" name="artworkDescription" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price of Piece:</label>
+                    <input type="number" id="price" name="price" min="0" step="100" required>
+                </div>
+                <div class="form-group">
+                    <label for="currency">Currency:</label>
+                    <select id="currency" name="currency">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                        <option value="JPY">JPY</option>
+                        <option value="KES">KES</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="artworkImage">Upload Artwork Image:</label>
+                    <input type="file" id="artworkImage" name="artworkImage" class="file-input" accept="image/*" required>
+                </div>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div class="image-viewer-container">
+            <div class="image-viewer" id="imageViewer">
+                <img id="imagePreview" src="https://via.placeholder.com/400" alt="Artwork Preview">
+            </div>
+        </div>
+    </div>
+    
+    <div class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    <div class="tooltip">Back to top</div>
+
+    <script>
+        document.getElementById('artworkImage').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('imagePreview').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById('artworkForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const artworkName = document.getElementById('artworkName').value;
+            const artistName = document.getElementById('artistName').value;
+            const artworkDescription = document.getElementById('artworkDescription').value;
+            const price = document.getElementById('price').value;
+
+            if (!artworkName || !artistName || !artworkDescription || !price) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            alert('Artwork submitted successfully!');
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
